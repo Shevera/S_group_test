@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css"   />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script>
+        function hexFromRGB(r, g, b) {
+            var hex = [
+                r.toString( 16 ),
+                g.toString( 16 ),
+                b.toString( 16 )
+            ];
+            $.each( hex, function( nr, val ) {
+                if ( val.length === 1 ) {
+                    hex[ nr ] = "0" + val;
+                }
+            });
+            return hex.join( "" ).toUpperCase();
+        }
+        function refreshSwatch() {
+            var red = $( "#red" ).slider( "value" ),
+                    green = $( "#green" ).slider( "value" ),
+                    blue = $( "#blue" ).slider( "value" ),
+                    hex = hexFromRGB( red, green, blue );
+            $( "#swatch" ).css( "background-color", "#" + hex );
+        }
+        $(function() {
+            $( "#red, #green, #blue" ).slider({
+                orientation: "horizontal",
+                range: "min",
+                max: 255,
+                value: 127,
+                slide: refreshSwatch,
+                change: refreshSwatch
+            });
+            $( "#red" ).slider( "value", 255 );
+            $( "#green" ).slider( "value", 140 );
+            $( "#blue" ).slider( "value", 60 );
+        });
+    </script>
+
+
+</head>
+<body>
+
+<div class="main_wrapper">
+
+
+        <div class="container container_wrapper">
+            <div class="row">
+                <div class="col-md-2">
+
+                    <div class="parallax">
+                        <div class="parallax__layer parallax__layer--back">
+                            <div id="circle_yellow_big_1" class="circle_yellow_big"></div>
+                            <div id="circle_yellow_big_2" class="circle_yellow_big"></div>
+                            <div id="circle_yellow_big_3" class="circle_yellow_big"></div>
+                        </div>
+
+                        <div class="parallax__layer parallax__layer--back">
+                            <div id="circle_yellow_little_1" class="circle_yellow_little" ></div>
+                            <div id="circle_yellow_little_2" class="circle_yellow_little"></div>
+                            <div id="circle_yellow_little_3" class="circle_yellow_little"></div>
+                            <div id="circle_yellow_little_4" class="circle_yellow_little"></div>
+                        </div>
+                        <div class="parallax__layer parallax__layer--base">
+                            <div id="circle_green_little_1" class="circle_green_little"></div>
+                            <div id="circle_green_little_2" class="circle_green_little"></div>
+                            <div id="circle_green_little_3" class="circle_green_little"></div>
+                            <div id="circle_green_little_4" class="circle_green_little"></div>
+                            <div id="circle_green_little_5" class="circle_green_little"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9" >
+                    <div class="row">
+                       <div class="col-md-9">
+                           <h1>Hello this is test task</h1>
+                           <p>Lorem ipsum dolor sit amet,
+                               consectetur adipisicing elit. Aut, veritatis.
+                           </p>
+                       </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="ui-widget-content">
+                                <div id="swatch" class="ui-widget-content ui-corner-all"></div>
+                            <div id="red"></div>
+                            <div id="green" hidden></div>
+                            <div id="blue" hidden></div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 boss">
+                            <p class="text_center">Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. At quia sequi voluptatibus.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-1">відступ</div>
+            </div>
+        </div>
+
+</div>
+
+
+</body>
+</html>
